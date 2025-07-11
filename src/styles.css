@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8dc89;
+    color: #333;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+header{
+    background-color: #f8dc89;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+}
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    > li {
+        font-weight: bolder;
+        cursor: pointer;
+    }
+}
+main {
+    padding: 0.8rem;
+}
+footer {
+    background-color: #f8dc89;
+    text-align: center;
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

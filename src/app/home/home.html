@@ -1,0 +1,6 @@
+<h1>Formatges</h1>
+  <section class="home-list"> 
+    @defer (when formatgeList.length > 0){
+        <app-formatge-card  *ngFor="let formatge of formatgeList" [formatge]="formatge"></app-formatge-card> 
+    }
+  </section>
