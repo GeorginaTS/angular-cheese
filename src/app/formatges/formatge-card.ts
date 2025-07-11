@@ -9,7 +9,4 @@ import { RouterModule } from '@angular/router';
 })
 export class FormatgeCard {
     formatge = input.required<Formatge>();
-    constructor() {
-        console.log(this.formatge().nom);
-    }
 }
