@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Formatge } from '../formatges/formatge.interface';
 import { FormatgeService } from '../formatges/formatge.service';
 import { CommonModule } from '@angular/common';
@@ -15,21 +15,13 @@ import { FormatgeCard } from '../formatges/formatge-card';
   </section>`,
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit {
   formatgeList: Formatge[] = [];
   formatgeService: FormatgeService = inject(FormatgeService);
   constructor() {
-    this.formatgeService
-      .getFormatges()
-      .then((formatges: Formatge[]) => {
-        this.formatgeList = formatges;
-        console.log('Formatges fetched successfully:', this.formatgeList);
-      })
-      .catch((error: Error) => {
-        console.error('Error fetching formatges:', error);
-      });
   }
-  onInit() {
+
+  ngOnInit() {
     this.formatgeService
       .getFormatges()
       .then((formatges: Formatge[]) => {
