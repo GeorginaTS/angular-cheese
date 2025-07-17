@@ -1,20 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+  --color-background: #fffaf1;
+  --color-card: #fef3c7;
+  --color-text: #3f3f46;
+  --color-title: #92400e;
+  --color-link: #b45309;
+}
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8dc89;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 a {
     cursor: pointer;
     text-decoration: none;
+    color: var(--title-color)
+}
+a:hover {
+    text-decoration: underline;
+}
+p {
+    color: var(--text-color);
+}
+input[type="text"] {
+    min-width: 100%;
+    font-size: 1.2rem;
+    height: 2rem;
+    border: 1px solid var(--text-color);
+    border-radius: 0.4rem;
+    color: var(--title-color);
+    padding: 0.4rem;
 }
 header{
-    background-color: #f8dc89;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,9 +55,17 @@ header ul {
 }
 main {
     padding: 0.8rem;
+    background-color: var(--bg-color);
+}
+section {
+    min-width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 footer {
-    background-color: #f8dc89;
     text-align: center;
     padding: 0.5rem;
     position: fixed;

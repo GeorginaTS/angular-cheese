@@ -5,7 +5,15 @@ import { RouterModule } from '@angular/router';
   selector: 'app-formatge-card',
   imports: [RouterModule],
   templateUrl: './formatge-card.html',
-  styles: '.formatge-card { border: 1px solid #ccc; padding: 10px; margin: 10px; background-color:rgb(129, 21, 21); height: 300px; width: 300px;color: white } ',
+  styles: `
+  .formatge-card { 
+    padding: 1rem; 
+    background-color:var(--bg-card-color); 
+    width: 300px;
+    border-radius: 1rem;
+    height: 100%;
+    box-sizing: border-box;
+    } `,
 })
 export class FormatgeCard {
     formatge = input.required<Formatge>();

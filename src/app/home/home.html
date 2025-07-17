@@ -1,6 +1,11 @@
-<h1>Formatges</h1>
+
+<section class="buscador-section">
+  <h3>Buscador de Formatges</h3>
+<form id="buscador">
+  <input type="text" name="buscador-string" id="buscador-string">
+</form>
+</section>
   <section class="home-list"> 
-    @defer (when formatgeList.length > 0){
-        <app-formatge-card  *ngFor="let formatge of formatgeList" [formatge]="formatge"></app-formatge-card> 
-    }
+      @for(formatge of formatgeList; track formatge.id) {
+        <app-formatge-card [formatge]="formatge"></app-formatge-card> }
   </section>

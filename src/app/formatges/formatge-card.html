@@ -1,5 +1,7 @@
+
 <article class="formatge-card">
-    <h3>{{formatge().nom}}</h3>
-    <p>{{formatge().pais_procedencia}}</p>
-    <p>{{formatge().descripcio}}</p>    
+    <a [routerLink]="['formatges/{{formatge().id}}']"><h3>{{formatge().nom}}</h3></a>
+    <p>Llet de {{formatge().tipus_llet}} - <b>{{formatge().pais_procedencia}}</b></p>
+    <p>{{formatge().descripcio}}</p> 
+    <p>formatges/{{formatge().id}}</p> 
 </article>
