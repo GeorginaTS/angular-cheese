@@ -1,7 +1,7 @@
 
 <article class="formatge-card">
-    <a [routerLink]="['formatges/{{formatge().id}}']"><h3>{{formatge().nom}}</h3></a>
+    <a href="formatges/{{formatge().id}}"><h3>{{formatge().nom}}</h3></a>
+    <hr>
     <p>Llet de {{formatge().tipus_llet}} - <b>{{formatge().pais_procedencia}}</b></p>
     <p>{{formatge().descripcio}}</p> 
-    <p>formatges/{{formatge().id}}</p> 
 </article>

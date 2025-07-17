@@ -1,8 +1,15 @@
-
-<article>
-    <a [routerLink]="['/{{formatge.id}}']"><h3>{{formatge.nom}}</h3></a>
+<section>
+<article class="formatge-detail">
+    <h3>{{formatge.nom}}</h3>
+    <hr>
     <p>Llet de {{formatge.tipus_llet}} - <b>{{formatge.pais_procedencia}}</b></p>
-    <p>{{formatge.tipus_fermentacio}}</p>
-    <p>{{formatge.temps_maduracio}}</p>
-    <p>{{formatge.descripcio}}</p>  
+    <p>Fermentació: {{formatge.tipus_fermentacio}}</p>
+    <p>Temps de maduració:{{formatge.temps_maduracio}}</p>
+    <br>
+    <p>{{formatge.descripcio}}</p> 
+    <hr>
+    <div style="display: flex; justify-content: center; gap: 1rem ;"><button>Modificar</button><button>Eliminar</button></div>
+
 </article>
+
+</section>

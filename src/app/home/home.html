@@ -1,11 +1,13 @@
 
 <section class="buscador-section">
   <h3>Buscador de Formatges</h3>
-<form id="buscador">
-  <input type="text" name="buscador-string" id="buscador-string">
-</form>
+<div id="buscador">
+  <input type="text" name="buscador-string" id="buscador-string"  placeholder="Cerca per nom" #filter (change)="filterResults(filter.value)">
+  <button type="button" (click)="filterResults(filter.value)">Cercar</button>
+</div>
 </section>
+<br>
   <section class="home-list"> 
-      @for(formatge of formatgeList; track formatge.id) {
+      @for(formatge of filteredformatgeList; track formatge.id) {
         <app-formatge-card [formatge]="formatge"></app-formatge-card> }
   </section>

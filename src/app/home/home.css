@@ -1,20 +1,24 @@
 .home-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 .buscador-section {
-background-color: var(--title-color);
-padding: 1rem;
-color: var(--bg-color);
+  width: 100%;
+  background-color: var(--title-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:3rem;
 }
 #buscador {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
 }

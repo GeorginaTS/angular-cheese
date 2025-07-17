@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
   .formatge-card { 
     padding: 1rem; 
     background-color:var(--bg-card-color); 
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     width: 300px;
     border-radius: 1rem;
     height: 100%;
