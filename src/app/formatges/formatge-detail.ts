@@ -1,20 +1,13 @@
 import { Component, input, inject } from '@angular/core';
 import { Formatge } from './formatge.interface';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { formatgesList } from './formatges.data';
 
 @Component({
   selector: 'app-formatge-detail',
   imports: [RouterModule],
   templateUrl: './formatge-detail.html',
-  styles: `
-  .formatge-detail { 
-    padding: 1rem; 
-    background-color:var(--bg-card-color); 
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    min-width: 50%;
-    border-radius: 1rem;
-    } `,
+  styleUrl: './formatges.css'
 })
 export class FormatgeDetail {
   route: ActivatedRoute = inject(ActivatedRoute);
@@ -28,7 +21,7 @@ export class FormatgeDetail {
     descripcio: '',
   };
 
-  constructor() {
+  constructor(private router: Router) {
     const id: string = this.route.snapshot.params['id'];
     this.formatge = this.formatgeById(id);
   }
@@ -44,4 +37,11 @@ export class FormatgeDetail {
     };
     return this.formatge;
   }
+  
+  deleteFormatge(id: string) {
+    console.log("delete formatge: "+id);
+    const index = formatgesList.findIndex((formatge) => formatge.id === id);
+    formatgesList.splice(index, 1);
+    this.router.navigate(['/formatges/']);
+  } 
 }

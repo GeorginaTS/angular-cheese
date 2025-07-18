@@ -1,15 +1,25 @@
 <section>
-<article class="formatge-detail">
-    <h3>{{formatge.nom}}</h3>
-    <hr>
-    <p>Llet de {{formatge.tipus_llet}} - <b>{{formatge.pais_procedencia}}</b></p>
-    <p>Fermentació: {{formatge.tipus_fermentacio}}</p>
-    <p>Temps de maduració:{{formatge.temps_maduracio}}</p>
-    <br>
-    <p>{{formatge.descripcio}}</p> 
-    <hr>
-    <div style="display: flex; justify-content: center; gap: 1rem ;"><button>Modificar</button><button>Eliminar</button></div>
-
-</article>
-
+  <article class="formatge-detail">
+    <div style="display: flex; justify-content: space-between">
+      <h3>{{ formatge.nom }}</h3>
+      @if(formatge.tipus_llet =="vaca") { <h1>🐄</h1> } 
+      @if(formatge.tipus_llet =="ovella") {<h1>🐑</h1>}
+      @if(formatge.tipus_llet =="cabra") { <h1>🐐</h1>}
+    </div>
+    <hr />
+    <p>
+      Llet de {{ formatge.tipus_llet }} - <b>{{ formatge.pais_procedencia }}</b>
+    </p>
+    <p>Fermentació: {{ formatge.tipus_fermentacio }}</p>
+    <p>Temps de maduració:{{ formatge.temps_maduracio }}</p>
+    <br />
+    <p>{{ formatge.descripcio }}</p>
+    <hr />
+    <div style="display: flex; justify-content: center; gap: 1rem">
+      <a href="formatges/update/{{ formatge.id }}" class="button">Modificar</a
+      ><button (click)="deleteFormatge(formatge.id)" class="button">
+        Eliminar
+      </button>
+    </div>
+  </article>
 </section>

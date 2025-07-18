@@ -10,9 +10,17 @@ import { formatgesList } from '../formatges/formatges.data';
   styleUrl: './home.css',
 })
 export class Home {
-  formatgeList = formatgesList;
-  filteredformatgeList: Formatge[] = formatgesList;
-  constructor() {}
+    // formatgeListLS = localStorage.getItem('formatgesListLS');
+    formatgeList: Formatge[] = formatgesList;
+    filteredformatgeList: Formatge[] = this.formatgeList;
+    // OnInit() {
+    //   this.formatgeList = !localStorage.getItem('formatgesListLS') ? formatgesList : JSON.parse(localStorage.getItem('formatgesListLS')!);
+    //   localStorage.setItem('formatgesListLS', JSON.stringify(this.formatgeList)); 
+    // }
+
+  constructor() {
+
+  }
 
   filterResults(text: string) {
     if (!text) {

@@ -3,7 +3,8 @@ import { Home } from './home/home';
 import { About } from './about/about';
 import { FormatgeDetail } from './formatges/formatge-detail';
 import { Notfound } from './notfound/notfound';
-import { FormatgeAdd } from './formatges/formatge-add';
+import { FormatgeAdd } from './formatges/crud/formatge-add';
+import { FormatgeUpdate } from './formatges/crud/formatge-update';
 
 export const routes: Routes = [
   {
@@ -11,7 +12,17 @@ export const routes: Routes = [
     component: Home,
     title: 'Home page',
   },
+  {
+    path: 'formatges/add',
+    component: FormatgeAdd,
+    title: 'Add Formatge',
+  },
     {
+    path: 'formatges/update/:id',
+    component: FormatgeUpdate,
+    title: 'Add Formatge',
+  },
+  {
     path: 'formatges',
     component: Home,
     title: 'Formatges List',
@@ -22,19 +33,13 @@ export const routes: Routes = [
     title: 'Detail page',
   },
   {
-    path: 'formatges/add',
-    component: FormatgeAdd,
-    title: 'Add Formatge',
-  },
-  {
     path: 'about',
     component: About,
     title: 'About page',
   },
   {
-    path:'**',
+    path: '**',
     component: Notfound,
     title: 'Page not found',
-
-  }
+  },
 ];

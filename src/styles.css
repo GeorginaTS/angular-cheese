@@ -31,14 +31,22 @@ a {
 a:hover {
   text-decoration: underline;
 }
+h1 {
+  color: var(--title-color);
+  text-align: center;
+  font-size: 2.4rem;}
 p {
   color: var(--text-color);
 }
 hr {
-    background-color: var(--title-color);
-    height: 1px;
-    border: none;
-    margin: 0.4rem 0 0.8rem 0;
+  background-color: var(--title-color);
+  height: 1px;
+  border: none;
+  margin: 0.4rem 0 0.8rem 0;
+}
+label {
+  font-weight: bolder;
+  border-bottom: 1px solid var(--title-color) ;
 }
 input[type="text"] {
   min-width: 40vw;
@@ -49,8 +57,18 @@ input[type="text"] {
   color: var(--title-color);
   padding: 0.4rem;
 }
-button {
+textarea {
+  font-size: 1.2rem;
+  border: 1px solid var(--text-color);
+  border-radius: 0.4rem;
+  color: var(--title-color);
+  padding: 0.4rem;
+  height: 12rem;
+}
+button,
+.button {
   min-width: 100px;
+  max-width: 200px;
   font-size: 1.2rem;
   font-weight: bolder;
   display: flex;
@@ -62,6 +80,7 @@ button {
   color: var(--title-color);
   padding: 0.4rem;
   cursor: pointer;
+  background-color: var(--bg-color);
 }
 header {
   display: flex;
