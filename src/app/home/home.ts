@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Formatge } from '../formatges/formatge.interface';
 import { CommonModule } from '@angular/common';
-import { FormatgeCard } from '../formatges/components/formatge-card';
+import { FormatgeCard } from '../formatges/components/formatge-card/formatge-card';
 import { formatgesList } from '../formatges/formatges.data';
+import { FormatgeService } from '../formatges/formatge.service';
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormatgeCard],
@@ -10,17 +11,15 @@ import { formatgesList } from '../formatges/formatges.data';
   styleUrl: './home.css',
 })
 export class Home {
-  // formatgeListLS = localStorage.getItem('formatgesListLS');
-  formatgeList: Formatge[] = formatgesList;
-  filteredformatgeList: Formatge[] = this.formatgeList;
-  // OnInit() {
-  //   this.formatgeList = !localStorage.getItem('formatgesListLS') ? formatgesList : JSON.parse(localStorage.getItem('formatgesListLS')!);
-  //   localStorage.setItem('formatgesListLS', JSON.stringify(this.formatgeList));
-  // }
+  formatgeList: Formatge[];
+  filteredformatgeList: Formatge[];
 
-  constructor() {}
-
-  filterResults(text: string) {
+  constructor(private formatgeService: FormatgeService) {
+    //this.formatgeService.saveFormatgesLS(formatgesList);
+    this.formatgeList = this.formatgeService.getFormatgesLS();
+    this.filteredformatgeList = this.formatgeList;
+  }
+  filterResults(text: string): void {
     if (!text) {
       this.formatgeList = this.formatgeList;
       return;

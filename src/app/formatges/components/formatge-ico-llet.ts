@@ -1,12 +1,15 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-formatge-ico-llet',
   imports: [],
-  template: `      
-      @if(tipus =="vaca") { <h1>🐄</h1> } 
-      @if(tipus =="ovella") {<h1>🐑</h1>}
-      @if(tipus =="cabra") { <h1>🐐</h1>}
-      @if(tipus =="búfala") { <h1>🐂</h1>}`,
+  template: `
+    <div class="text-2xl">
+      @if(tipus =="vaca") {🐄} 
+      @if(tipus =="ovella") {🐑} 
+      @if(tipus =="cabra"){🐐} 
+      @if(tipus =="búfala") {🐂}
+    </div>
+  `,
   styleUrl: '../formatges.css',
 })
 export class FormatgeICOLlet {

@@ -4,8 +4,9 @@
     <input type="text" name="nom" id="nom" formControlName="nom">
     <label for="pais_procedencia">País de procedencia</label>
     <input type="text" name="pais_procedencia" id="pais_procedencia" formControlName="pais_procedencia">
-    <label for="tipus_llet">Tipus de llet</label>
-    <input type="text" name="tipus_llet" id="tipus_llet" formControlName="tipus_llet">
+    <label for="tipus_llet">Tipus de llet ({{tipus_lletSelected}})</label>
+    <input type="hidden" name="tipus_llet" id="tipus_llet" formControlName="tipus_llet">
+    <app-formatge-select-llet (tipusLletSeleccionat)="tipusLletInput($event)" [tipus]="tipus_lletSelected"></app-formatge-select-llet>
     <label for="tipus_fermentacio">Tipus de fermentació</label>
     <input type="text" name="tipus_fermentacio" id="tipus_fermentacio" formControlName="tipus_fermentacio">
     <label for="temps_maduracio">Temps de maduració</label>

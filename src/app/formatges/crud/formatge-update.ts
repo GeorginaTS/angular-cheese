@@ -3,10 +3,12 @@ import { Formatge } from '../formatge.interface';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { formatgesList } from '../formatges.data';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormatgeService } from '../formatge.service';
+import { FormatgeSelectLlet } from '../components/formatge-select-llet';
 
 @Component({
   selector: 'app-formatge-update',
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, FormatgeSelectLlet],
   templateUrl: './formatge-update.html',
   styleUrl: '../formatges.css',
 })
@@ -21,6 +23,7 @@ export class FormatgeUpdate {
     temps_maduracio: '',
     descripcio: '',
   };
+  tipus_lletSelected: string = '';
   formatgeForm: FormGroup;
   nom: FormControl;
   pais_procedencia: FormControl;
@@ -29,13 +32,14 @@ export class FormatgeUpdate {
   temps_maduracio: FormControl;
   descripcio: FormControl;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private formatgeService: FormatgeService) {
     const id: string = this.route.snapshot.params['id'];
     this.formatge = this.formatgeById(id);
-    
+        
     this.nom = new FormControl(this.formatge.nom);
     this.pais_procedencia = new FormControl(this.formatge.pais_procedencia);
     this.tipus_llet = new FormControl(this.formatge.tipus_llet);
+    this.tipus_lletSelected = this.formatge.tipus_llet
     this.tipus_fermentacio = new FormControl(this.formatge.tipus_fermentacio);
     this.temps_maduracio = new FormControl(this.formatge.temps_maduracio);
     this.descripcio = new FormControl(this.formatge.descripcio);
@@ -62,6 +66,11 @@ export class FormatgeUpdate {
     };
     return this.formatge;
   }
+  tipusLletInput(valor: string) {
+    this.tipus_lletSelected = valor;
+    this.tipus_llet.setValue(this.tipus_lletSelected);
+  }
+  
   updateFormatge(id: string):Formatge {
     const index = formatgesList.findIndex((formatge) => formatge.id === id);
     formatgesList[index] = this.formatgeForm.value;
