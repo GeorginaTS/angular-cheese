@@ -3,10 +3,11 @@ import { Formatge } from '../formatge.interface';
 import { Form, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { formatgesList } from '../formatges.data';
+import { FormatgeSelectLlet } from '../components/formatge-select-llet';
 
 @Component({
   selector: 'app-formatge-add',
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, FormatgeSelectLlet],
   templateUrl: './formatge-add.html',
   styleUrl: '../formatges.css',
 })

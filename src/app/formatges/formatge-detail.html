@@ -2,9 +2,9 @@
   <article class="formatge-detail">
     <div style="display: flex; justify-content: space-between">
       <h3>{{ formatge.nom }}</h3>
-      @if(formatge.tipus_llet =="vaca") { <h1>🐄</h1> } 
-      @if(formatge.tipus_llet =="ovella") {<h1>🐑</h1>}
-      @if(formatge.tipus_llet =="cabra") { <h1>🐐</h1>}
+      <app-formatge-ico-llet
+        [tipus]="formatge.tipus_llet"
+      ></app-formatge-ico-llet>
     </div>
     <hr />
     <p>

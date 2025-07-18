@@ -183,7 +183,7 @@ export const formatgesList: Formatge[] = [
   {
     "id": "fmt021",
     "nom": "Queso Idiazábal",
-    "pais_procedencia": "Espanya (País Basc/Navarra)",
+    "pais_procedencia": "Euskadi i Navarra",
     "tipus_llet": "ovella",
     "tipus_fermentacio": "enzimàtica",
     "temps_maduracio": "mínim 2 mesos",

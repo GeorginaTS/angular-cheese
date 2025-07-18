@@ -34,7 +34,8 @@ a:hover {
 h1 {
   color: var(--title-color);
   text-align: center;
-  font-size: 2.4rem;}
+  font-size: 2.4rem;
+}
 p {
   color: var(--text-color);
 }
@@ -46,12 +47,20 @@ hr {
 }
 label {
   font-weight: bolder;
-  border-bottom: 1px solid var(--title-color) ;
+  border-bottom: 1px solid var(--title-color);
 }
 input[type="text"] {
-  min-width: 40vw;
   font-size: 1.2rem;
   height: 2rem;
+  border: 1px solid var(--text-color);
+  border-radius: 0.4rem;
+  color: var(--title-color);
+  padding: 0.4rem;
+}
+select {
+  width: 100%;
+  font-size: 1.2rem;
+  height: 2.4rem;
   border: 1px solid var(--text-color);
   border-radius: 0.4rem;
   color: var(--title-color);

@@ -2,10 +2,11 @@ import { Component, input, inject } from '@angular/core';
 import { Formatge } from './formatge.interface';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { formatgesList } from './formatges.data';
+import { FormatgeICOLlet } from './components/formatge-ico-llet'; 
 
 @Component({
   selector: 'app-formatge-detail',
-  imports: [RouterModule],
+  imports: [RouterModule, FormatgeICOLlet],
   templateUrl: './formatge-detail.html',
   styleUrl: './formatges.css'
 })
