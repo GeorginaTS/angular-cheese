@@ -1,48 +1,70 @@
-import { Component, input, inject } from '@angular/core';
-import { Formatge } from './formatge.interface';
+import { Component, inject } from '@angular/core';
+import { Formatge } from '../models/formatge.interface';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { formatgesList } from './formatges.data';
-import { FormatgeICOLlet } from './components/formatge-ico-llet'; 
+import { FormatgeICOLlet } from './components/formatge-ico-llet';
+import { FormatgeService } from '../services/formatge.service';
+import { Observable, switchMap, of } from 'rxjs';
+import {AsyncPipe, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-formatge-detail',
-  imports: [RouterModule, FormatgeICOLlet],
-  templateUrl: './formatge-detail.html',
-  styleUrl: './formatges.css'
+  standalone: true,
+  imports: [FormatgeICOLlet, AsyncPipe, RouterModule, NgIf],
+  template: `<section *ngIf="formatge$| async as f">
+  <article class="formatge-detail">
+    <div style="display: flex; justify-content: space-between">
+      <h3>{{ f.nom }}</h3>
+      <app-formatge-ico-llet
+        [tipus]="f.tipus_llet"
+      ></app-formatge-ico-llet>
+    </div>
+    <hr />
+    <p class="text-zinc-500">
+      Llet de {{ f.tipus_llet }} - <b>{{ f.pais_procedencia }}</b>
+    </p>
+    <p>Fermentació: {{f.tipus_fermentacio }}</p>
+    <p>Temps de maduració:{{ f.temps_maduracio }}</p>
+    <br />
+    <p>{{ f.descripcio }}</p>
+    <hr /> 
+      <div style="display: flex; justify-content: center; gap: 1rem">
+      <a href="formatges/update/{{ f.id }}" class="button">Modificar</a>
+      <button (click)="deleteFormatge(f.id)" class="button">
+        Eliminar
+      </button>
+    </div>
+  </article>
+</section>
+`,
+  styleUrl: './formatges.css',
 })
 export class FormatgeDetail {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  formatge: Formatge = {
-    id: '',
-    nom: '',
-    pais_procedencia: '',
-    tipus_llet: '',
-    tipus_fermentacio: '',
-    temps_maduracio: '',
-    descripcio: '',
-  };
-
-  constructor(private router: Router) {
-    const id: string = this.route.snapshot.params['id'];
-    this.formatge = this.formatgeById(id);
-  }
-  formatgeById(id: string): Formatge {
-    this.formatge = formatgesList.find((formatge) => formatge.id === id) ?? {
-      id: '',
-      nom: 'Not found Formatge',
-      pais_procedencia: '',
-      tipus_llet: '',
-      tipus_fermentacio: '',
-      temps_maduracio: '',
-      descripcio: '',
-    };
-    return this.formatge;
-  }
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
   
+  constructor(private formatgeService: FormatgeService) {
+    const id: string = this.route.snapshot.params['id'] as string; 
+    this.formatge$ = this.formatgeService.getFormatgesById(id);
+  }
+
+formatge$: Observable<Formatge> = of({} as Formatge);
+
+ngOnInit(): void {
+  this.formatge$ = this.route.paramMap.pipe(
+    switchMap(params => {
+      const id = params.get('id');
+      if (id) {
+        return this.formatgeService.getFormatgesById(id);
+      } else {
+        this.router.navigate(['/formatges']);
+        return of({} as Formatge); // observable buit però tipat
+      }
+    })
+  );
+}
+
   deleteFormatge(id: string) {
-    console.log("delete formatge: "+id);
-    const index = formatgesList.findIndex((formatge) => formatge.id === id);
-    formatgesList.splice(index, 1);
-    this.router.navigate(['/formatges/']);
-  } 
+    this.formatgeService.deleteFormatge(id);
+    this.router.navigate(['formatges']);
+  }
 }

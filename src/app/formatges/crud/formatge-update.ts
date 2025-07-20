@@ -1,10 +1,10 @@
 import { Component, input, inject } from '@angular/core';
-import { Formatge } from '../formatge.interface';
+import { Formatge } from '@/models/formatge.interface';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { formatgesList } from '../formatges.data';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormatgeService } from '../formatge.service';
-import { FormatgeSelectLlet } from '../components/formatge-select-llet';
+import { FormatgeService } from '@/services/formatge.service';
+import { FormatgeSelectLlet } from '@/formatges/components/formatge-select-llet';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-formatge-update',
@@ -14,15 +14,7 @@ import { FormatgeSelectLlet } from '../components/formatge-select-llet';
 })
 export class FormatgeUpdate {
   route: ActivatedRoute = inject(ActivatedRoute);
-  formatge: Formatge = {
-    id: '',
-    nom: '',
-    pais_procedencia: '',
-    tipus_llet: '',
-    tipus_fermentacio: '',
-    temps_maduracio: '',
-    descripcio: '',
-  };
+  formatge$: Observable<Formatge> = of({} as Formatge); 
   tipus_lletSelected: string = '';
   formatgeForm: FormGroup;
   nom: FormControl;
@@ -31,51 +23,77 @@ export class FormatgeUpdate {
   tipus_fermentacio: FormControl;
   temps_maduracio: FormControl;
   descripcio: FormControl;
+  id: FormControl;
 
-  constructor(private router: Router, private formatgeService: FormatgeService) {
-    const id: string = this.route.snapshot.params['id'];
-    this.formatge = this.formatgeById(id);
-        
-    this.nom = new FormControl(this.formatge.nom);
-    this.pais_procedencia = new FormControl(this.formatge.pais_procedencia);
-    this.tipus_llet = new FormControl(this.formatge.tipus_llet);
-    this.tipus_lletSelected = this.formatge.tipus_llet
-    this.tipus_fermentacio = new FormControl(this.formatge.tipus_fermentacio);
-    this.temps_maduracio = new FormControl(this.formatge.temps_maduracio);
-    this.descripcio = new FormControl(this.formatge.descripcio);
+  constructor(
+    private router: Router,
+    private formatgeService: FormatgeService
+  ) {
+    const idQuery: string = this.route.snapshot.params['id'];
+    this.formatge$ = this.formatgeService.getFormatgesById(idQuery);
+
+    // Initialize empty controls first
+    this.id = new FormControl('');
+    this.nom = new FormControl('');
+    this.pais_procedencia = new FormControl('');
+    this.tipus_llet = new FormControl('');
+    this.tipus_lletSelected = '';
+    this.tipus_fermentacio = new FormControl('');
+    this.temps_maduracio = new FormControl('');
+    this.descripcio = new FormControl('');
 
     this.formatgeForm = new FormGroup({
+      id: this.id,
       nom: this.nom,
       pais_procedencia: this.pais_procedencia,
       tipus_llet: this.tipus_llet,
       tipus_fermentacio: this.tipus_fermentacio,
       temps_maduracio: this.temps_maduracio,
-      descripcio: this.descripcio
+      descripcio: this.descripcio,
     });
 
+    // Subscribe to the observable to populate the form when data arrives
+    this.formatge$.subscribe((formatge: Formatge) => {
+      if (formatge) {
+        this.id.setValue(formatge.id);
+        this.nom.setValue(formatge.nom);
+        this.pais_procedencia.setValue(formatge.pais_procedencia);
+        this.tipus_llet.setValue(formatge.tipus_llet);
+        this.tipus_lletSelected = formatge.tipus_llet;
+        this.tipus_fermentacio.setValue(formatge.tipus_fermentacio);
+        this.temps_maduracio.setValue(formatge.temps_maduracio);
+        this.descripcio.setValue(formatge.descripcio);
+      }
+    });
   }
-  formatgeById(id: string): Formatge {
-    this.formatge = formatgesList.find((formatge) => formatge.id === id) ?? {
-      id: '',
-      nom: 'Not found Formatge',
-      pais_procedencia: '',
-      tipus_llet: '',
-      tipus_fermentacio: '',
-      temps_maduracio: '',
-      descripcio: '',
-    };
-    return this.formatge;
+  ngOnInit(): void {
+    this.formatge$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        const id = params.get('id');
+        if (id) {
+          return this.formatgeService.getFormatgesById(id);
+        } else {
+          this.router.navigate(['/formatges']);
+          return of({} as Formatge); // observable buit però tipat
+        }
+      })
+    );
   }
+
   tipusLletInput(valor: string) {
     this.tipus_lletSelected = valor;
     this.tipus_llet.setValue(this.tipus_lletSelected);
   }
-  
-  updateFormatge(id: string):Formatge {
-    const index = formatgesList.findIndex((formatge) => formatge.id === id);
-    formatgesList[index] = this.formatgeForm.value;
-    console.log(formatgesList[index].nom+" -->updated");
-    this.router.navigate(['/formatges/']);
-    return formatgesList[index];
+
+  updateFormatge() {
+    try {
+      this.formatgeService.updateFormatge(this.formatgeForm.value.id, this.formatgeForm.value); // this.formatgeService.updateFormatge(id, this.formatgeForm.value);
+      let updated = this.formatgeService.updateFormatge(this.id.value, this.formatgeForm.value);
+      console.log(updated + ' -->updated');
+    } catch (error) {
+      console.log(error);
+    }
+    // this.router.navigate(['/formatges/']);
+    return this.formatgeForm.value;
   }
 }

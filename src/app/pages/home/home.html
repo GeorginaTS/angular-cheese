@@ -7,7 +7,9 @@
 </form>
 </section>
 <br>
+@if (filteredformatgeList$ | async) {
   <section class="home-list"> 
-      @for(formatge of filteredformatgeList; track formatge.id) {
+      @for(formatge of (filteredformatgeList$ | async); track formatge.id) {
         <app-formatge-card [formatge]="formatge"></app-formatge-card> }
   </section>
+}

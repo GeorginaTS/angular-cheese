@@ -1,6 +1,7 @@
 <section>
-<form class="formatge-form" [formGroup]="formatgeForm" (submit)="updateFormatge(formatge.id)">
+<form class="formatge-form" [formGroup]="formatgeForm" (submit)="updateFormatge()">
     <label for="nom">Nom del formatge</label>
+ 
     <input type="text" name="nom" id="nom" formControlName="nom">
     <label for="pais_procedencia">País de procedencia</label>
     <input type="text" name="pais_procedencia" id="pais_procedencia" formControlName="pais_procedencia">
@@ -15,6 +16,6 @@
     <textarea name="descripcio" id="descripció"  rows="8" formControlName="descripcio"></textarea>
 <div></div>
     <hr>
- <div></div><button>Modificar</button>
+    <input type="text" name="id" id="id" formControlName="id" readonly><button>Modificar</button>
 </form>
 </section>

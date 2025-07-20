@@ -1,23 +1,23 @@
-<section>
+<section *ngIf="formatge$| async as f">
   <article class="formatge-detail">
     <div style="display: flex; justify-content: space-between">
-      <h3>{{ formatge.nom }}</h3>
+      <h3>{{ f.nom }}</h3>
       <app-formatge-ico-llet
-        [tipus]="formatge.tipus_llet"
+        [tipus]="f.tipus_llet"
       ></app-formatge-ico-llet>
     </div>
     <hr />
-    <p>
-      Llet de {{ formatge.tipus_llet }} - <b>{{ formatge.pais_procedencia }}</b>
+    <p class="text-zinc-500">
+      Llet de {{ f.tipus_llet }} - <b>{{ f.pais_procedencia }}</b>
     </p>
-    <p>Fermentació: {{ formatge.tipus_fermentacio }}</p>
-    <p>Temps de maduració:{{ formatge.temps_maduracio }}</p>
+    <p>Fermentació: {{f.tipus_fermentacio }}</p>
+    <p>Temps de maduració:{{ f.temps_maduracio }}</p>
     <br />
-    <p>{{ formatge.descripcio }}</p>
-    <hr />
-    <div style="display: flex; justify-content: center; gap: 1rem">
-      <a href="formatges/update/{{ formatge.id }}" class="button">Modificar</a
-      ><button (click)="deleteFormatge(formatge.id)" class="button">
+    <p>{{ f.descripcio }}</p>
+    <hr /> 
+      <div style="display: flex; justify-content: center; gap: 1rem">
+      <a href="formatges/update/{{ f.id }}" class="button">Modificar</a
+      ><button (click)="deleteFormatge(f.id)" class="button">
         Eliminar
       </button>
     </div>

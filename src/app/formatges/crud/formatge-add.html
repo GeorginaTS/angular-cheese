@@ -1,7 +1,7 @@
 <section>
 <form class="formatge-form" [formGroup]="formatgeForm" (submit)="addFormatge()">
     <label for="id">Id del formatge</label>
-    <input type="text" name="id" id="id" formControlName="id">
+    <input type="text" name="id" id="id" formControlName="id" readonly>
     <label for="nom">Nom del formatge</label>
     <input type="text" name="nom" id="nom" formControlName="nom">
     <label for="pais_procedencia">País de procedencia</label>

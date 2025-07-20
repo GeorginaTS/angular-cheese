@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Formatge } from '../../formatge.interface';
+import { Formatge } from '../../../models/formatge.interface';
 import { RouterModule } from '@angular/router';
 import { FormatgeICOLlet } from '../formatge-ico-llet';
 @Component({

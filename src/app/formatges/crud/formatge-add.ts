@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Formatge } from '../formatge.interface';
+import { Formatge } from '@/models/formatge.interface';
 import {
   Form,
   FormControl,
@@ -10,6 +10,7 @@ import {
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { formatgesList } from '../formatges.data';
 import { FormatgeSelectLlet } from '../components/formatge-select-llet';
+import { FormatgeService } from '../../services/formatge.service';
 
 @Component({
   selector: 'app-formatge-add',
@@ -28,8 +29,10 @@ export class FormatgeAdd {
     descripcio: '',
   };
   tipus_lletSelected: string = '';
+
   formatgeForm: FormGroup;
   id: FormControl;
+  idFormatge: string = '';
   nom: FormControl;
   pais_procedencia: FormControl;
   tipus_llet: FormControl;
@@ -37,19 +40,24 @@ export class FormatgeAdd {
   temps_maduracio: FormControl;
   descripcio: FormControl;
 
-  constructor(private router: Router) {
-    this.id = new FormControl('', [
+  constructor(
+    private router: Router,
+    private formatgeService: FormatgeService
+  ) {
+    this.idFormatge = this.formatgeService.generarNouId();
+    this.id = new FormControl(this.idFormatge, [
       Validators.required,
-      Validators.minLength(3)
+      Validators.minLength(3),
     ]);
     this.nom = new FormControl('', [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(28)
+      Validators.maxLength(28),
     ]);
     this.pais_procedencia = new FormControl('', [
-      Validators.required, Validators.minLength(3),
-      Validators.maxLength(50)
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(50),
     ]);
     this.tipus_llet = new FormControl('');
     this.tipus_fermentacio = new FormControl('');
@@ -70,12 +78,15 @@ export class FormatgeAdd {
     this.tipus_lletSelected = valor;
     this.tipus_llet.setValue(this.tipus_lletSelected);
   }
-  
+
   addFormatge() {
-    console.log('-->' + this.formatgeForm.value);
-    formatgesList.push(this.formatgeForm.value);
-    window.localStorage.setItem('formatges', JSON.stringify(formatgesList));
-    this.formatgeForm.reset();
-    this.router.navigate(['/formatges/']);
+    try {
+      this.formatgeService.addFormatge(this.formatgeForm.value);
+      console.log(this.formatgeForm.value + ' -->addFormatge');
+      this.formatgeForm.reset();
+      this.router.navigate(['/formatges/']);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
