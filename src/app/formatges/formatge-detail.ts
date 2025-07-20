@@ -64,7 +64,10 @@ ngOnInit(): void {
 }
 
   deleteFormatge(id: string) {
-    this.formatgeService.deleteFormatge(id);
+    this.formatgeService.deleteFormatge(id).subscribe({
+      next: (res) => console.log('Eliminat:', res),
+      error: (err) => console.error('Error eliminant formatge:', err)
+    });;
     this.router.navigate(['formatges']);
   }
 }

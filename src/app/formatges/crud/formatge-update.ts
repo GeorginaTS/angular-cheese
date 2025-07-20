@@ -14,7 +14,7 @@ import { Observable, of, switchMap } from 'rxjs';
 })
 export class FormatgeUpdate {
   route: ActivatedRoute = inject(ActivatedRoute);
-  formatge$: Observable<Formatge> = of({} as Formatge); 
+  formatge$: Observable<Formatge> = of({} as Formatge);
   tipus_lletSelected: string = '';
   formatgeForm: FormGroup;
   nom: FormControl;
@@ -68,7 +68,7 @@ export class FormatgeUpdate {
   }
   ngOnInit(): void {
     this.formatge$ = this.route.paramMap.pipe(
-      switchMap(params => {
+      switchMap((params) => {
         const id = params.get('id');
         if (id) {
           return this.formatgeService.getFormatgesById(id);
@@ -87,13 +87,16 @@ export class FormatgeUpdate {
 
   updateFormatge() {
     try {
-      this.formatgeService.updateFormatge(this.formatgeForm.value.id, this.formatgeForm.value); // this.formatgeService.updateFormatge(id, this.formatgeForm.value);
-      let updated = this.formatgeService.updateFormatge(this.id.value, this.formatgeForm.value);
-      console.log(updated + ' -->updated');
+      this.formatgeService
+        .updateFormatge(this.formatgeForm.value.id, this.formatgeForm.value)
+        .subscribe({
+          next: (res) => console.log('Actualitzat:', res),
+          error: (err) => console.error('Error actualitzant formatge:', err),
+        });
     } catch (error) {
       console.log(error);
     }
-    // this.router.navigate(['/formatges/']);
+    this.router.navigate(['/formatges/']);
     return this.formatgeForm.value;
   }
 }

@@ -81,8 +81,10 @@ export class FormatgeAdd {
 
   addFormatge() {
     try {
-      this.formatgeService.addFormatge(this.formatgeForm.value);
-      console.log(this.formatgeForm.value + ' -->addFormatge');
+      this.formatgeService.addFormatge(this.formatgeForm.value).subscribe({
+      next: (res) => console.log('Afegit:', res),
+      error: (err) => console.error('Error afegint formatge:', err)
+    });;
       this.formatgeForm.reset();
       this.router.navigate(['/formatges/']);
     } catch (error) {

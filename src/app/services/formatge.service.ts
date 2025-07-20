@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormatgeService {
   private url = 'http://localhost:3000/formatges';
-  private http = inject(HttpClient);
-
+  // private http = inject(HttpClient);
+  constructor(private http: HttpClient) {}
   getFormatges(): Observable<Formatge[]>  {
     return this.http.get<Formatge[]>(this.url);
   }
