@@ -20,7 +20,7 @@ import { FormatgeService } from '../../services/formatge.service';
 })
 export class FormatgeAdd {
   formatge: Formatge = {
-    id: '',
+    id: 'sense id',
     nom: '',
     pais_procedencia: '',
     tipus_llet: '',
@@ -32,7 +32,7 @@ export class FormatgeAdd {
 
   formatgeForm: FormGroup;
   id: FormControl;
-  idFormatge: string = '';
+  idFormatge: string = 'sense idformatge';
   nom: FormControl;
   pais_procedencia: FormControl;
   tipus_llet: FormControl;
@@ -44,8 +44,17 @@ export class FormatgeAdd {
     private router: Router,
     private formatgeService: FormatgeService
   ) {
-    this.idFormatge = this.formatgeService.generarNouId();
-    this.id = new FormControl(this.idFormatge, [
+   this.formatgeService.generarNouId().subscribe({
+  next: (id) => {
+    this.idFormatge = id;
+    this.id.setValue(id);
+    console.log('ID generat:', this.idFormatge);
+  },
+  error: (err) => {
+    console.error('Error generant ID:', err);
+  }
+});
+    this.id = new FormControl(this.idFormatge.toString(), [
       Validators.required,
       Validators.minLength(3),
     ]);
@@ -84,8 +93,7 @@ export class FormatgeAdd {
       this.formatgeService.addFormatge(this.formatgeForm.value).subscribe({
       next: (res) => console.log('Afegit:', res),
       error: (err) => console.error('Error afegint formatge:', err)
-    });;
-      this.formatgeForm.reset();
+    });
       this.router.navigate(['/formatges/']);
     } catch (error) {
       console.log(error);

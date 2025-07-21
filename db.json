@@ -11,7 +11,7 @@
     },
     {
       "id": "fmt002",
-      "nom": "Comté2",
+      "nom": "Comté",
       "pais_procedencia": "França",
       "tipus_llet": "vaca",
       "tipus_fermentacio": "enzimàtica",
@@ -227,12 +227,21 @@
     },
     {
       "id": "fmt026",
-      "nom": "Prova 2",
-      "pais_procedencia": "Catalunya",
-      "tipus_llet": "cabra",
-      "tipus_fermentacio": "lactica",
-      "temps_maduracio": "3 setmanes",
-      "descripcio": "bonissim"
+      "nom": "lalala",
+      "pais_procedencia": "lololo",
+      "tipus_llet": "",
+      "tipus_fermentacio": "liiii",
+      "temps_maduracio": "asfd",
+      "descripcio": "sffS"
+    },
+    {
+      "id": "fmt027",
+      "nom": "fsdaSSFA",
+      "pais_procedencia": "SFASaf",
+      "tipus_llet": "",
+      "tipus_fermentacio": "AFSSFa",
+      "temps_maduracio": "ASF",
+      "descripcio": "aSD"
     }
   ]
 }
