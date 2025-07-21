@@ -1,59 +1,53 @@
 # 1AngularCheese
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+A simple application to manage a list of cheeses, built with Angular.
 
-## Development server
+## Description
 
-To start a local development server, run:
+This project is a web application that allows users to browse, view, add, and update a list of cheeses. It is built with Angular and uses a local `db.json` file as a database.
 
-```bash
-ng serve
-```
+## Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* View a list of cheeses
+* Filter cheeses by name or country of origin
+* View the details of a specific cheese
+* Add a new cheese to the list
+* Update an existing cheese
 
-## Code scaffolding
+## Installation
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/1-angular-cheese.git
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-ng generate component component-name
-```
+## Running the application
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Start the development server:
+   ```bash
+   npm start
+   ```
+2. Open your browser and navigate to `http://localhost:4200/`.
 
-```bash
-ng generate --help
-```
+## Project Structure
 
-## Building
+The project is organized as follows:
 
-To build the project run:
+* `src/app/components`: Contains reusable components.
+* `src/app/formatges`: Contains the main components for managing cheeses, including the list, detail, add, and update pages.
+* `src/app/models`: Contains the `Formatge` interface.
+* `src/app/pages`: Contains the main pages of the application, such as the home page and the about page.
+* `src/app/services`: Contains the `FormatgeService`, which is responsible for fetching and managing the cheese data.
 
-```bash
-ng build
-```
+## Available Pages
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Home**: Displays a list of all cheeses. You can filter the list by name or country of origin.
+* **Formatges**: Same as the home page.
+* **Formatges/:id**: Displays the details of a specific cheese.
+* **Formatges/add**: Allows you to add a new cheese to the list.
+* **Formatges/update/:id**: Allows you to update an existing cheese.
+* **About**: Displays information about the application.
