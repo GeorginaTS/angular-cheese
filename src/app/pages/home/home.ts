@@ -27,7 +27,8 @@ export class Home {
     this.filteredformatgeList$ = this.formatgeList$.pipe(
       map((formatges) =>
         formatges.filter((formatge) =>
-          formatge.nom.toLowerCase().includes(text.toLowerCase())
+          formatge.nom.toLowerCase().includes(text.toLowerCase()) ||
+          formatge.pais_procedencia.toLowerCase().includes(text.toLowerCase())
         )
       )
     );

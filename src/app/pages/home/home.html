@@ -2,7 +2,7 @@
 <section class="buscador-section">
   <div>Buscador de Formatges</div>
 <form id="buscador">
-  <input type="text" name="buscador-string" id="buscador-string"  placeholder="Cerca per nom" #filter (change)="filterResults(filter.value)">
+  <input type="text" name="buscador-string" id="buscador-string"  placeholder="Cerca per nom o país" #filter (change)="filterResults(filter.value)">
   <button type="button" (click)="filterResults(filter.value)">Cercar</button>
 </form>
 </section>

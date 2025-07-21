@@ -227,21 +227,12 @@
     },
     {
       "id": "fmt026",
-      "nom": "lalala",
-      "pais_procedencia": "lololo",
-      "tipus_llet": "",
-      "tipus_fermentacio": "liiii",
-      "temps_maduracio": "asfd",
-      "descripcio": "sffS"
-    },
-    {
-      "id": "fmt027",
-      "nom": "fsdaSSFA",
-      "pais_procedencia": "SFASaf",
-      "tipus_llet": "",
-      "tipus_fermentacio": "AFSSFa",
-      "temps_maduracio": "ASF",
-      "descripcio": "aSD"
+      "nom": "Formatge prova 26",
+      "pais_procedencia": "Catalunya",
+      "tipus_llet": "cabra",
+      "tipus_fermentacio": "lactica",
+      "temps_maduracio": "1 mes",
+      "descripcio": "el millor formatge"
     }
   ]
 }
