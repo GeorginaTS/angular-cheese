@@ -1,0 +1,12 @@
+<section>
+    <div class="formatge-card"><h3>Login</h3>
+        <hr>
+        <form [formGroup]="loginForm" class="flex flex-col gap-2 items-center">
+        <input type="text" name="email" id="email" placeholder="Email" formControlName="email">
+        <input type="text" name="password" id="password" placeholder="Password" formControlName="password">
+    </form><br>
+            <hr>
+        <button type="button" (click)="login()" class="w-12">Login</button>
+</div>
+
+</section>

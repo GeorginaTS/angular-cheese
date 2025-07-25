@@ -31,11 +31,6 @@
   
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 :root {
   --bg-color: #fffaf1;
   --bg-card-color: #fef3c7;
@@ -112,18 +107,17 @@ button,
 .button {
   min-width: 100px;
   max-width: 200px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bolder;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
   border: 1px solid var(--text-color);
   border-radius: 0.4rem;
-  color: var(--title-color);
-  padding: 0.4rem;
+  color: var(--bg-color);
+  padding: 0.8rem 1rem;
   cursor: pointer;
-  background-color: var(--bg-color);
+  background-color: var(--title-color);
 }
 header {
   display: flex;

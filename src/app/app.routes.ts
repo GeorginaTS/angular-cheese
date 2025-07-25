@@ -5,12 +5,18 @@ import { FormatgeDetail } from '@/formatges/formatge-detail';
 import { Notfound } from './pages/notfound/notfound';
 import { FormatgeAdd } from './formatges/crud/formatge-add';
 import { FormatgeUpdate } from './formatges/crud/formatge-update';
+import { Login } from './pages/login/login';
 
 export const routes: Routes = [
   {
     path: '',
     component: Home,
     title: 'Home page',
+  },
+    {
+    path: 'login',
+    component: Login,
+    title: 'Login page',
   },
   {
     path: 'formatges/add',

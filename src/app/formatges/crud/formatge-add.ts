@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { formatgesList } from '../formatges.data';
 import { FormatgeSelectLlet } from '../components/formatge-select-llet';
 import { FormatgeService } from '../../services/formatge.service';
 
@@ -44,16 +43,16 @@ export class FormatgeAdd {
     private router: Router,
     private formatgeService: FormatgeService
   ) {
-   this.formatgeService.generarNouId().subscribe({
-  next: (id) => {
-    this.idFormatge = id;
-    this.id.setValue(id);
-    console.log('ID generat:', this.idFormatge);
-  },
-  error: (err) => {
-    console.error('Error generant ID:', err);
-  }
-});
+    this.formatgeService.generarNouId().subscribe({
+      next: (id) => {
+        this.idFormatge = id;
+        this.id.setValue(id);
+        console.log('ID generat:', this.idFormatge);
+      },
+      error: (err) => {
+        console.error('Error generant ID:', err);
+      },
+    });
     this.id = new FormControl(this.idFormatge.toString(), [
       Validators.required,
       Validators.minLength(3),
@@ -91,9 +90,9 @@ export class FormatgeAdd {
   addFormatge() {
     try {
       this.formatgeService.addFormatge(this.formatgeForm.value).subscribe({
-      next: (res) => console.log('Afegit:', res),
-      error: (err) => console.error('Error afegint formatge:', err)
-    });
+        next: (res) => console.log('Afegit:', res),
+        error: (err) => console.error('Error afegint formatge:', err),
+      });
       this.router.navigate(['/formatges/']);
     } catch (error) {
       console.log(error);

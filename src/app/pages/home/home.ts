@@ -4,9 +4,10 @@ import { AsyncPipe } from '@angular/common';
 import { FormatgeCard } from '../../formatges/components/formatge-card/formatge-card';
 import { FormatgeService } from '../../services/formatge.service';
 import { map, Observable } from 'rxjs';
+import { Searchbar } from '@/components/searchbar';
 @Component({
   selector: 'app-home',
-  imports: [FormatgeCard, AsyncPipe],
+  imports: [FormatgeCard, AsyncPipe, Searchbar],
   templateUrl: `./home.html`,
   styleUrl: './home.css',
 })
@@ -18,6 +19,10 @@ export class Home {
     this.formatgeList$ = this.formatgeService.getFormatges();
     this.filteredformatgeList$ = this.formatgeList$;
   }
+searchInput(valor: string) {
+  console.log("valor:", valor);
+  this.filterResults(valor);
+}
   filterResults(text: string): void {
     if (!text) {
       this.filteredformatgeList$ = this.formatgeList$;

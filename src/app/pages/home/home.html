@@ -1,10 +1,10 @@
-
-<section class="buscador-section">
-  <div>Buscador de Formatges</div>
-<form id="buscador">
+<section class="bg-amber-600 rounded-lg flex gap-4 p-2">
+  <h3>Buscador de Formatges</h3>
+  <app-searchbar (searchString)="searchInput($event)"></app-searchbar>
+<!-- <form id="buscador">
   <input type="text" name="buscador-string" id="buscador-string"  placeholder="Cerca per nom o país" #filter (change)="filterResults(filter.value)">
   <button type="button" (click)="filterResults(filter.value)">Cercar</button>
-</form>
+</form> -->
 </section>
 <br>
 @if (filteredformatgeList$ | async) {

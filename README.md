@@ -18,20 +18,28 @@ This project is a web application that allows users to browse, view, add, and up
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/1-angular-cheese.git
+   git clone https://github.com/GeorginaTS/1-angular-cheese.git
    ```
 2. Install the dependencies:
    ```bash
    npm install
    ```
+3. Install json server
+   ```bash
+   npm install -g json-server
+   ```
 
 ## Running the application
 
-1. Start the development server:
+1. Start json server 
+   ````bash
+   json-server --watch db.json
+   ````
+2. Start the development server:
    ```bash
    npm start
    ```
-2. Open your browser and navigate to `http://localhost:4200/`.
+3. Open your browser and navigate to `http://localhost:4200/`.
 
 ## Project Structure
 

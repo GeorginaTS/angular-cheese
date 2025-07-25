@@ -233,6 +233,25 @@
       "tipus_fermentacio": "lactica",
       "temps_maduracio": "1 mes",
       "descripcio": "el millor formatge"
+    },
+    {
+      "id": "fmt027",
+      "nom": "Prova 27",
+      "pais_procedencia": "Catalunya",
+      "tipus_llet": "ovella",
+      "tipus_fermentacio": "enzimàtica",
+      "temps_maduracio": "3 mesos",
+      "descripcio": "Un bon formatge català"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@cheese.com",
+      "password": "admin"
+    },
+    {
+      "email": "user@cheese.com",
+      "password": "user"
     }
   ]
 }

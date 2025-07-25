@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { Formatge } from '@/models/formatge.interface';
-import { formatgesList } from '@/formatges/formatges.data';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
